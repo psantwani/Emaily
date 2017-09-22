@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 class Header extends Component {
 
@@ -13,7 +14,7 @@ class Header extends Component {
 				);
 			default:
 				return (
-					<li><a>Logout</a></li>
+					<li><a href="/api/logout">Logout</a></li>
 				);
 		}
 	}
@@ -22,9 +23,12 @@ class Header extends Component {
 		return(
 			<nav>
 			    <div className="nav-wrapper">
-			      <a className="brand-logo">
+			      <Link 
+				  style={{marginLeft: '10px'}}
+				  to={ this.props.auth ? '/surveys' : '/' }
+				  className="brand-logo">
 			      	Emaily
-			      </a>
+			      </Link>
 			      <ul className="right">
 			        {this.renderContent()}
 			      </ul>
